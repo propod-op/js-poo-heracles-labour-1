@@ -4,7 +4,7 @@ const fg = require('./src/Fighter');
 
 let heracles = new fg('🐬 Heracles',20,17,100);
 let biloute = new fg('🐂 Biloute',20,16,100);
-let lion = new fg('🦔 Lion de némée',20,15,100);
+let lion = new fg('🦔 Lion de némée',19,18,100);
 
 const tableauDeJoueurs= [heracles,biloute,lion];
 
@@ -39,16 +39,7 @@ for(let i=0;i<tableauDeJoueurs.length;i++){
 }
 
 tableauDeJoueurs.sort(compare_life).reverse();
-console.log(`${tableauDeJoueurs[0].name} a gagné !!!!!!`);
-
-
-/*if(tableauDeJoueurs[0].life > tableauDeJoueurs[1].life){
-    console.log("🏆 🐬 Heracles à gagné !🐬 🏆");
-}else{
-    console.log("🏆 🦔 Lion de Némée à gagné !🦔 🏆");
-}*/
-
-
+console.log(`🏆🏆🏆 ${tableauDeJoueurs[0].name} a gagné !!🏆🏆🏆`);
 console.log('--------------------------------------------');
 //----------------------- SCORE FINAL ------------------------------------
 
