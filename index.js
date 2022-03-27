@@ -7,16 +7,18 @@ let biloute = new fg('🐂 Biloute',20,16,100);
 let lion = new fg('🦔 Lion de némée',20,15,100);
 
 const tableauDeJoueurs= [heracles,biloute,lion];
-//const fighters=[heracles,biloute];
 
 
 //----------------------- COMBAT ------------------------------------
 console.log('--------------------------------------------');
 console.log('----------- FIGHT STARTS !!! ---------------');
 console.log('--------------------------------------------');
-while(tableauDeJoueurs[0].life > 0 && tableauDeJoueurs[1].life > 0 ){
-    //let heracles = new fg('🐬 Heracles',20,15,100);
-    //heracles.fight(lion); //player1 -> donne un kick
+let continueFight=true;
+
+while(continueFight){
+    if(tableauDeJoueurs.every(element => element.life < 1)){
+        continueFight=false;
+    }
     let fi=[];
     while(fi.length === 0){
         fi = setFighters();
@@ -32,18 +34,21 @@ while(tableauDeJoueurs[0].life > 0 && tableauDeJoueurs[1].life > 0 ){
 //----------------------- SCORE FINAL ------------------------------------
 console.log('--------------------------------------------');
 for(let i=0;i<tableauDeJoueurs.length;i++){
-    tableauDeJoueurs[i].life;
+    tableauDeJoueurs[i].showInfos();
     console.log(`🏆 Vie de ${tableauDeJoueurs[i].name} reste : ${tableauDeJoueurs[i].life} de vie.🏆`);
 }
 
-if(tableauDeJoueurs[0].life > tableauDeJoueurs[1].life){
+tableauDeJoueurs.sort(compare_life).reverse();
+console.log(`${tableauDeJoueurs[0].name} a gagné !!!!!!`);
+
+
+/*if(tableauDeJoueurs[0].life > tableauDeJoueurs[1].life){
     console.log("🏆 🐬 Heracles à gagné !🐬 🏆");
 }else{
     console.log("🏆 🦔 Lion de Némée à gagné !🦔 🏆");
-}
+}*/
 
-lion.showInfos();
-heracles.showInfos();
+
 console.log('--------------------------------------------');
 //----------------------- SCORE FINAL ------------------------------------
 
@@ -78,3 +83,14 @@ function getRandomNumberBetween(min,max){
     return Math.floor(Math.random()*(max-min+1)+min);
 }
 //--------------- ORCHESTRATION DE COMBATANTS ----------------------------
+
+function compare_life( a, b )
+  {
+  if ( a.life< b.life){
+    return -1;
+  }
+  if ( a.life > b.life){
+    return 1;
+  }
+  return 0;
+}
